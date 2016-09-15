@@ -7,8 +7,13 @@ def multiple?(year, divisor)
 	year % divisor == 0
 end
 
-def amount(a)
-	('%.1f' % ((a / 31536000.0) * 100)) + '%'
+SECONDS_IN_A_YEAR = 1.0*60*60*24*365 #31536000.0
+def percentage_of_year(seconds)
+	format_as_percentage(seconds / SECONDS_IN_A_YEAR)
+end
+
+def format_as_percentage(n)
+	('%.1f' % (n * 100)) + '%'
 end
 
 def convert(x)
