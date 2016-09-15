@@ -16,26 +16,26 @@ def format_as_percentage(n)
 	('%.1f' % (n * 100)) + '%'
 end
 
-def convert(x)
-	a, b = x.split(":")
-	c, d = b.split(" ")
-	e = ""
-
-	if d.downcase != 'am'
-		if a.to_i == 12
-			e = a + ":" + c
+def standard_to_military(time)
+	hour, rest = time.split(":")
+	minutes, meridiem = rest.split(" ")
+	military = ""
+meridiem = meridiem.downcase
+	if meridiem == 'pm'
+		if hour.to_i == 12
+			military = hour + ":" + minutes
 		else
-			e = (a.to_i + 12).to_s + ":" + c
+			military = (hour.to_i + 12).to_s + ":" + minutes
 		end
-	elsif d.downcase != 'pm'
-		if a.to_i == 12
-			e = (a.to_i - 12).to_s + ":" + c
+	elsif meridiem == 'am'
+		if hour.to_i == 12
+			military = (hour.to_i - 12).to_s + ":" + minutes
 		else
-			e = a + ":" + c
+			military = hour + ":" + minutes
 		end
 	end
 
-	return e
+	return military
 end
 
 def convert2(x)

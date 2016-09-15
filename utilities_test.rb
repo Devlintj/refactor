@@ -46,4 +46,18 @@ describe 'utilities' do
       percentage_of_year(3942000).must_equal('12.5%')
     end
   end
+
+  describe 'standard_to_military' do
+    it 'convert standard to military time' do
+      standard_to_military('1:00 am').must_equal('1:00')
+    end
+
+    it 'should convert standard to military time' do
+      standard_to_military('1:00 pm').must_equal('13:00')
+    end
+
+    it 'should convert standard to military time' do
+      standard_to_military('2:00 PM').must_equal('14:00')
+    end
+  end
 end
