@@ -36,17 +36,27 @@ meridiem = meridiem.downcase
 	return military
 end
 
-def convert2(x)
-	a, b = x.split(":")
-	c = ""
+def military_to_standard(time)
+	hour, minutes = time.split(":")
+	standard = ""
 
-	if a.to_i < 12
-		c = a + b + " am"
+	if hour.to_i < 12 && hour.to_i != 0
+		standard = standard_conversion(hour, minutes) + " am"
+	elsif hour.to_i == 0
+		hour = (hour.to_i + 12).to_s
+		standard = standard_conversion(hour, minutes) + " am"
+	elsif hour.to_i == 12
+		standard = standard_conversion(hour, minutes) + " pm"
 	else
-		c = a + b + " pm"
+		hour = (hour.to_i - 12).to_s
+		standard = standard_conversion(hour, minutes) + " pm"
 	end
 
-	return c
+	return standard
+end
+
+def standard_conversion(hour, minutes)
+	standard = hour + ':' + minutes
 end
 
 def okay(a, b)

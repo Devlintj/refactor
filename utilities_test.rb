@@ -60,4 +60,26 @@ describe 'utilities' do
       standard_to_military('2:00 PM').must_equal('14:00')
     end
   end
+
+  describe 'military_to_standard' do
+    it 'should convert military to standard time' do
+      military_to_standard('1:00').must_equal('1:00 am')
+    end
+
+    it 'should convert military to standard time' do
+      military_to_standard('13:00').must_equal('1:00 pm')
+    end
+
+    it 'should convert military to standard time' do
+      military_to_standard('14:05').must_equal('2:05 pm')
+    end
+
+    it 'should convert military to standard time' do
+      military_to_standard('12:00').must_equal('12:00 pm')
+    end
+
+    it 'should convert military to standard time' do
+      military_to_standard('0:00').must_equal('12:00 am')
+    end
+  end
 end
