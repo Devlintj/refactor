@@ -21,18 +21,16 @@ def standard_to_military(time)
 	minutes, meridiem = rest.split(" ")
 	military = ""
 meridiem = meridiem.downcase
-	if meridiem == 'pm'
-		if hour.to_i == 12
+	if meridiem == 'pm' && hour.to_i == 12
 			military = hour + ":" + minutes
-		else
+	elsif meridiem == 'pm'
 			military = (hour.to_i + 12).to_s + ":" + minutes
-		end
+	end
+
+	if meridiem == 'am' && hour.to_i == 12
+		military = (hour.to_i - 12).to_s + ":" + minutes
 	elsif meridiem == 'am'
-		if hour.to_i == 12
-			military = (hour.to_i - 12).to_s + ":" + minutes
-		else
 			military = hour + ":" + minutes
-		end
 	end
 
 	return military
