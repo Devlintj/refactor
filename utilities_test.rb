@@ -82,4 +82,30 @@ describe 'utilities' do
       military_to_standard('0:00').must_equal('12:00 am')
     end
   end
+
+  describe 'bedtime' do
+    it 'should do something' do
+      bedtime('12:00 pm', true).must_equal(false)
+    end
+
+    it 'should do something' do
+      bedtime('8:00 pm', true).must_equal(false)
+    end
+
+    it 'should do something' do
+      bedtime('8:00 pm', false).must_equal(true)
+    end
+
+    it 'should do something' do
+      bedtime('4:00 pm', true).must_equal(true)
+    end
+
+    it 'should do something' do
+      bedtime('1:00 am', false).must_equal(true)
+    end
+
+    it 'should do something' do
+      bedtime('1:00 am', true).must_equal(true)
+    end
+  end
 end

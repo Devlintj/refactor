@@ -59,9 +59,9 @@ def standard_conversion(hour, minutes)
 	standard = hour + ':' + minutes
 end
 
-def okay(a, b)
+def bedtime(time, is_weekday)
 	c = false
-	if (a.split(":")[0].to_i >= 8 && b || a.split(":")[0].to_i >= 10 && !b) && a.split(":")[1].split(" ")[1] == 'pm'
+	if (time.split(":")[0].to_i >= 8 && is_weekday || time.split(":")[0].to_i >= 10 && !is_weekday) && time.split(":")[1].split(" ")[1] == 'pm'
 		c = false
 	else
 		c = true
