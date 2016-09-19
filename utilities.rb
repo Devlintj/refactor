@@ -59,14 +59,18 @@ def standard_conversion(hour, minutes)
 	standard = hour + ':' + minutes
 end
 
-def bedtime(time, is_weekday)
-	c = false
-	if (time.split(":")[0].to_i >= 8 && is_weekday || time.split(":")[0].to_i >= 10 && !is_weekday) && time.split(":")[1].split(" ")[1] == 'pm'
-		c = false
+def bedtime(time, is_weekend)
+	bedtime = false
+	hour, rest = time.split(":")
+	minutes, meridiem = rest.split(" ")
+	if (hour.to_i >= 8 && is_weekend)
+		bedtime = false
+  elsif hour.to_i >= 10 && !is_weekend && meridiem == 'pm'
+	bedtime = false
 	else
-		c = true
+		bedtime = true
 	end
-	return c
+	return bedtime
 end
 
 def span(a, b)
