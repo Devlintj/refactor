@@ -59,15 +59,15 @@ def standard_conversion(hour, minutes)
 	standard = hour + ':' + minutes
 end
 
-def bedtime(time, is_weekend)
+def bedtime(time, is_weekday)
 	hour, rest = time.split(":")
 	minutes, meridiem = rest.split(" ")
-	if (hour.to_i >= 8 && is_weekend)
-		bedtime = false
-  elsif hour.to_i >= 10 && !is_weekend && meridiem == 'pm'
-	bedtime = false
-	else
+	if (hour.to_i >= 8 && is_weekday)
 		bedtime = true
+  elsif hour.to_i >= 10 && !is_weekday && meridiem == 'pm'
+	bedtime = true
+	else
+		bedtime = false
 	end
 	return bedtime
 end

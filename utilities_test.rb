@@ -84,28 +84,28 @@ describe 'utilities' do
   end
 
   describe 'bedtime' do
-    it 'should not be bedtime if after 10:00 and is weekend' do
-      bedtime('12:00 pm', true).must_equal(false)
+    it 'should be bedtime if after 10:00 and is weekday' do
+      bedtime('12:00 pm', true).must_equal(true)
     end
 
-    it 'should not be bedtime if after 8:00 and is weekend' do
-      bedtime('8:00 pm', true).must_equal(false)
+    it 'should be bedtime if after 8:00 and is weekday' do
+      bedtime('8:00 pm', true).must_equal(true)
     end
 
-    it 'should be bedtime if is 8:00 and is not weekend' do
-      bedtime('8:00 pm', false).must_equal(true)
+    it 'should not be bedtime if is 8:00 and is not weekday' do
+      bedtime('8:00 pm', false).must_equal(false)
     end
 
-    it 'should be bedtime if 4:00 and weekend' do
-      bedtime('4:00 pm', true).must_equal(true)
+    it 'should not be bedtime if 4:00 and weekday' do
+      bedtime('4:00 pm', true).must_equal(false)
     end
 
-    it 'should be bedtime if 1:00 am and is not weekend' do
-      bedtime('1:00 am', false).must_equal(true)
+    it 'should not be bedtime if 1:00 am and is not weekday' do
+      bedtime('1:00 am', false).must_equal(false)
     end
 
-    it 'should be bedtime if 1:00 am and is weekend' do
-      bedtime('1:00 am', true).must_equal(true)
+    it 'should not be bedtime if 1:00 am and is weekday' do
+      bedtime('1:00 am', true).must_equal(false)
     end
   end
 
