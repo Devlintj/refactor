@@ -108,4 +108,22 @@ describe 'utilities' do
       bedtime('1:00 am', true).must_equal(true)
     end
   end
+
+  describe 'span_of_difference_in_year' do
+    it 'should span_of_difference_in_year' do
+      span_of_difference_in_year(800000, 90).must_equal('2.5%')
+    end
+
+    it 'should span_of_difference_in_year' do
+      span_of_difference_in_year(400, 900000).must_equal("2.9%")
+    end
+
+    it 'should span_of_difference_in_year' do
+      span_of_difference_in_year(8000000, 4000).must_equal("25.4%")
+    end
+
+    it 'should span_of_difference_in_year' do
+      span_of_difference_in_year(8, 2).must_equal('0.0%')
+    end
+  end
 end

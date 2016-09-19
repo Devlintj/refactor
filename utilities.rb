@@ -60,7 +60,6 @@ def standard_conversion(hour, minutes)
 end
 
 def bedtime(time, is_weekend)
-	bedtime = false
 	hour, rest = time.split(":")
 	minutes, meridiem = rest.split(" ")
 	if (hour.to_i >= 8 && is_weekend)
@@ -73,16 +72,10 @@ def bedtime(time, is_weekend)
 	return bedtime
 end
 
-def span(a, b)
-	c = 0
-	d = 0
-	if a < b
-		c = b
-		d = a
-	else
-		c = a
-		d = b
-	end
+def span_of_difference_in_year(seconds1, seconds2)
+		difference_of_seconds(seconds2, seconds1).to_s + '%'
+end
 
-	return ('%.1f' % (amount(c)[0..-2].to_f - amount(d)[0..-2].to_f)).to_s + '%'
+def difference_of_seconds(time1, time2)
+	return '%.1f' % (percentage_of_year(time1).to_f - percentage_of_year(time2).to_f).abs
 end
